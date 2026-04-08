@@ -10,6 +10,7 @@ import { Provider } from '../provider.model';
 })
 export class ProviderList implements OnInit {
   providers: Provider[] = [];
+  filteredProviders: Provider[] = [];
 
   constructor(
     private providerService: ProviderService,
@@ -24,12 +25,23 @@ export class ProviderList implements OnInit {
     this.providerService.getProviders().subscribe({
       next: (data) => {
         this.providers = data;
+        this.filteredProviders = data;
         this.cdr.detectChanges();
       },
       error: (error) => {
         console.error('API Error:', error);
       },
     });
+  }
+
+  search(term: string): void {
+    const lower = term.toLowerCase();
+    this.filteredProviders = this.providers.filter(
+      (p) =>
+        p.providerName.toLowerCase().includes(lower) ||
+        p.serviceType.toLowerCase().includes(lower) ||
+        p.city.toLowerCase().includes(lower),
+    );
   }
 
   deleteProvider(id?: string): void {
