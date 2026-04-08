@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/providers">Provider Tracker</a>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/providers">Providers</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/providers/new">Add Provider</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,147 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form id="provider-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="providerName">Provider Name:</label>
+              <input
+                type="text"
+                id="providerName"
+                class="form-control"
+                name="providerName"
+                required
+                #providerName="ngModel"
+                [ngModel]="providerData?.providerName"
+              />
+              <div class="alert alert-danger" *ngIf="providerName.touched && providerName.invalid">
+                Provider name is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="serviceType">Service Type:</label>
+              <input
+                type="text"
+                id="serviceType"
+                class="form-control"
+                name="serviceType"
+                required
+                #serviceType="ngModel"
+                [ngModel]="providerData?.serviceType"
+              />
+              <div class="alert alert-danger" *ngIf="serviceType.touched && serviceType.invalid">
+                Service type is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="state">State:</label>
+              <input
+                type="text"
+                id="state"
+                class="form-control"
+                name="state"
+                required
+                #state="ngModel"
+                [ngModel]="providerData?.state"
+              />
+              <div class="alert alert-danger" *ngIf="state.touched && state.invalid">
+                State is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="city">City:</label>
+              <input
+                type="text"
+                id="city"
+                class="form-control"
+                name="city"
+                required
+                #city="ngModel"
+                [ngModel]="providerData?.city"
+              />
+              <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+                City is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="phone">Phone:</label>
+              <input
+                type="text"
+                id="phone"
+                class="form-control"
+                name="phone"
+                #phone="ngModel"
+                [ngModel]="providerData?.phone"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="email">Email:</label>
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                name="email"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                #email="ngModel"
+                [ngModel]="providerData?.email"
+              />
+              <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                Enter a valid email address.
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="status">Status:</label>
+              <input
+                type="text"
+                id="status"
+                class="form-control"
+                name="status"
+                #status="ngModel"
+                [ngModel]="providerData?.status || 'Active'"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="notes">Notes:</label>
+              <textarea
+                id="notes"
+                class="form-control"
+                name="notes"
+                #notes="ngModel"
+                [ngModel]="providerData?.notes"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 btn-toolbar">
+              <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+              <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
